@@ -5,6 +5,10 @@ def updateInventory(arr1, arr2):
         for ele in arr2:
             if item[1] in ele[1]:
                 result.append([item[0]+ele[0], item[1]])
+                arr1.pop(arr1.index(item))
+                arr2.pop(arr2.index(ele))
+
+    result = result+arr1+arr2
     return result
 
 
