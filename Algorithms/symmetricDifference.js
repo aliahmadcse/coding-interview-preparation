@@ -1,28 +1,9 @@
-function sym(...args) {
-    let result = [];
+const diff = (arr1, arr2) => [
+    ...arr1.filter((e) => !arr2.includes(e)),
+    ...arr2.filter((e) => !arr1.includes(e)),
+];
 
-    for (let i = 0; i < args.length - 1; i++) {
-        if (i > 0) {
-            let newArr = [...result];
-            result = [];
-            result.push(
-                ...args[i + 1].filter((item) => !newArr.includes(item))
-            );
-            result.push(
-                ...newArr.filter((item) => !args[i + 1].includes(item))
-            );
-        } else {
-            result.push(
-                ...args[i].filter((item) => !args[i + 1].includes(item))
-            );
-            result.push(
-                ...args[i + 1].filter((item) => !args[i].includes(item))
-            );
-        }
-    }
-
-    return [...new Set(result)].sort();
-}
+const sym = (...args) => [...new Set(args.reduce(diff))].sort();
 
 const result = sym(
     [3, 3, 3, 2, 5],
