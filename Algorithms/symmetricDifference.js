@@ -1,8 +1,20 @@
+/**
+ * calculate the symmetric difference between two result
+ * @param {type:array} arr1
+ * @param {type:array} arr2
+ * @return {type:array} An array containing the symmetric difference
+ */
 const diff = (arr1, arr2) => [
     ...arr1.filter((e) => !arr2.includes(e)),
     ...arr2.filter((e) => !arr1.includes(e)),
 ];
 
+/**
+ * uses a javascript higher order function to call diff
+ * @param  {...any} args The variable number of arguments
+ * @return {type:array} A new array containing the symmetric
+ * difference of all arrays
+ */
 const sym = (...args) => [...new Set(args.reduce(diff))].sort();
 
 const result = sym(
