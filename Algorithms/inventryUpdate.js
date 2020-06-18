@@ -1,6 +1,27 @@
 function updateInventory(arr1, arr2) {
-    // All inventory must be accounted for or you're fired!
-    return arr1;
+    let matchedItems = arr1.map(([quan, item]) => {
+        // looping over arr2
+        for (const [index, [newQuan, newItem]] of arr2.entries()) {
+            // if arr1 item match with new item, update the item quantity
+            // else just continue
+            if (item === newItem) {
+                // indicates that the arr2 item is matched
+                arr2[index].push(true);
+                return [quan + newQuan, item];
+            }
+        }
+        // if nothing match with arr2 inventry, returns the arr1 inventry
+        return [quan, item];
+    });
+
+    // filtering out the non matched item
+    const notMatched = arr2.filter((item) => item[2] !== true);
+    // consideing the non matched item also
+    matchedItems.push(...notMatched);
+    // sorting in alphabetical order
+    return matchedItems.sort((item1, item2) =>
+        item1[1].localeCompare(item2[1])
+    );
 }
 
 // Example inventory lists
@@ -18,4 +39,4 @@ var newInv = [
     [7, "Toothpaste"],
 ];
 
-updateInventory(curInv, newInv);
+console.log(updateInventory(curInv, newInv));
