@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {type:array} arr1
+ * @param {type:array} arr2
+ * @return {type:array} A sorted array containing all the updated items
+ */
 function updateInventory(arr1, arr2) {
     let matchedItems = arr1.map(([quan, item]) => {
         // looping over arr2
