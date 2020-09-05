@@ -1,9 +1,5 @@
-// const regex = /(.)\1+/;
+const arr = [1, 2, 3];
 
-// const str = "zzzzzzz";
+[arr[1], arr[0]] = [arr[0], arr[1]];
 
-// console.log(str.match(regex));
-
-console.log(3 % 2 ? 0 : i, 3 - 1);
-
-console.log(3 % 2);
+console.log(arr);
